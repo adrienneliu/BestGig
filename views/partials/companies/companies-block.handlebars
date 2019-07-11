@@ -1,0 +1,22 @@
+//Rendered from companies-api-routes.js (sequelize assignment) or companiesControllers (handlebars assignment). I latter
+files do the same
+
+<li>
+    {{company_name}}
+
+</li>
+
+<li>
+    {{average_rating}}
+    <button class ="change-rating" data-id="{{company-rating}}" data-newrating ="{{rating}}">
+   {{#if rating < 3 }} BAD GIG! {{else}} BEST GIG! {{/if}}    
+    </button>
+</li>
+
+<li>  
+{{average_pay_per_hour}}
+</li>
+
+<li>
+{{number_reviews}}
+</li>
