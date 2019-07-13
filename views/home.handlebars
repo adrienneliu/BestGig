@@ -17,6 +17,11 @@
             $('#myModal').modal('show');
         });
 
+        $('#myModal').modal({
+            backdrop: 'static',
+            keyboard: false
+        });
+
 
     </script>
 
@@ -24,16 +29,16 @@
 
 <body>
 
-    <!-- Modal for User input name and location -->
-    <div class="modal" tabindex="-1" role="dialog" id="myModal">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Log In</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
+     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Log In</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
@@ -52,24 +57,24 @@
 
                             <script src="https://cdn.jsdelivr.net/npm/places.js@1.16.4"></script>
                             <script>
-                            (function() {
-                              var placesAutocomplete = places({
-                                appId: 'pl4TRIIAJFA1',
-                                apiKey: '959339ddd5da57ac40f40d81051bb8b5',
-                                container: document.querySelector('#city'),
-                                templates: {
-                                  value: function(suggestion) {
-                                    return suggestion.name;
-                                  }
-                                }
-                              }).configure({
-                                type: 'city',
-                                countries: 'us',
-                                aroundLatLngViaIP: false,
-                              });
-                            })();
-                                               
-                        </script>
+                                (function () {
+                                    var placesAutocomplete = places({
+                                        appId: 'pl4TRIIAJFA1',
+                                        apiKey: '959339ddd5da57ac40f40d81051bb8b5',
+                                        container: document.querySelector('#city'),
+                                        templates: {
+                                            value: function (suggestion) {
+                                                return suggestion.name;
+                                            }
+                                        }
+                                    }).configure({
+                                        type: 'city',
+                                        countries: 'us',
+                                        aroundLatLngViaIP: false,
+                                    });
+                                })();
+
+                            </script>
                         </div>
                     </form>
 
@@ -83,29 +88,48 @@
     </div>
     <!-- Modal for Useer Reviews -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+        aria-hidden="true" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Submit Your Review</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    <form>
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input class="form-control" id="name" placeholder="Name">
+                        </div>
+                        <div class="form-group">
+                            <label>Company</label>
+                            <input class="form-control" id="company" placeholder="Company">
+                        </div>
+                        <div class="form-group">
+                            <label>Rating</label>
+                            <input class="form-control" id="rating" placeholder="Rating">
+                        </div>
+                        <div class="form-group">
+                            <label>Pay</label>
+                            <input class="form-control" id="pay" placeholder="Pay">
+                        </div>
+                        <div class="form-group">
+                            <label>Location</label>
+                            <input class="form-control" id="location" placeholder="Location">
+                        </div>
+                        <button type="submit" id="submitReview" class="btn btn-primary">Submit</button>
+                    </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+
             </div>
         </div>
     </div>
 
-                </div>
-            </div>
-        </div>
+    </div>
+    </div>
+    </div>
     </div>
 
 
@@ -117,14 +141,14 @@
                 <div class="input-group md-form form-sm form-2 pl-0">
                     <input class="form-control my-0 py-1 amber-border" type="text" placeholder="Search"
                         aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                     <div class="input-group-append">
                         <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
                             Filter
                         </button>
                         <!-- <span class="input-group-text amber lighten-3" id="basic-text1"><i
-                                    class="fa fa-bars text-grey" aria-hidden="true"></i></span> -->
+                                        class="fa fa-bars text-grey" aria-hidden="true"></i></span> -->
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#">Rating</a>
                             <a class="dropdown-item" href="#">Pay</a>
@@ -156,11 +180,11 @@
             </div>
             <div class="col-sm-4 ml-2">
                 <!-- <table border=0>
-                    <td>Uber </td>
-                    <tr>
-                     <td>Row 2</td>
-                   
-                </table> -->
+                        <td>Uber </td>
+                        <tr>
+                         <td>Row 2</td>
+                       
+                    </table> -->
 
                 <div class="container">
                     <div class="row">
@@ -187,8 +211,8 @@
 
 
 
-        
-    
+
+
 
     </div>
 
