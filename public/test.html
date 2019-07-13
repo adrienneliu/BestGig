@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Best Gig</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css" media="screen" title="no title">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <!-- This will show the data retrieved from the company list -->
+    <div class="container">
+        <!-- <h1>Company List</h1>
+        <h3>Company Name: <span id="company-name"></span></h3>
+        <h3>Average Rating: <span id="average-rating"></span></h3>
+        <h3>Average Pay Per Hour: <span id="average-pay"></span></h3>
+        <h3>Number Reviews: <span id="number-reviews"></span></h3>
+        <h3>Location: <span id = 'company-location'></span></h3>
+        <br>
+        Here if we input data for location, it should return entries with the matching location -->
+        <!-- <h3>Whenever a location is input, we will get the back the companies at that location and the average rating at
+            that city</h3>
+        <label for="location-search">Location:</label>
+        <input id='location-search' type="text">
+        <button id="search-btn">Search</button>
+
+        <h3>Company #1 Name: <span id='comp-name1'></span></h3>
+        <h3>Avg Rating: <span id='comp-avg-rating1'></span></h3>
+
+        <h3>Company #2 Name: <span id='comp-name2'></span></h3>
+        <h3>Avg Rating: <span id='comp-avg-rating2'></span></h3> -->
+        <form>
+            <div class="form-group">
+              <label>Name</label>
+              <input class="form-control" id="name" placeholder="Name">
+            </div>
+            <div class="form-group">
+                <label>Company</label>
+                <input class="form-control" id="company" placeholder="Company">
+              </div>
+              <div class="form-group">
+                <label>Rating</label>
+                <input class="form-control" id="rating" placeholder="Rating">
+              </div>
+              <div class="form-group">
+                <label>Pay</label>
+                <input class="form-control" id="pay" placeholder="Pay">
+              </div>
+              <div class="form-group">
+                <label>Location</label>
+                <input class="form-control" id="location" placeholder="Location">
+              </div>
+            <button type="submit" id = "submitReview" class="btn btn-primary">Submit</button>
+          </form>
+    </div>
+
+    <!-- <form>
+        <div class="form-group">
+          <label>Name</label>
+          <input class="form-control" id="name" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <label>Company</label>
+            <input class="form-control" id="company" placeholder="Password">
+          </div>
+          <div class="form-group">
+            <label>Rating</label>
+            <input class="form-control" id="rating" placeholder="Password">
+          </div>
+          <div class="form-group">
+            <label>Pay</label>
+            <input class="form-control" id="pay" placeholder="Password">
+          </div>
+          <div class="form-group">
+            <label>Location</label>
+            <input class="form-control" id="location" placeholder="Password">
+          </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form> -->
+
+
+</body>
+<script src="js/populatePage.js" type="text/javascript"></script>
+<script src="js/userReview.js" type="text/javascript"></script>
+
+</html>
