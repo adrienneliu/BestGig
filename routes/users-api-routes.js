@@ -1,20 +1,104 @@
-var db = require("../models");
+const express = require("express");
+const router = express.Router();
+const bcrypt = require("bcryptjs");
+const passport = require("passport")
 
-// The data here is specific to the users models in the bestGigs_db
+// User Model
+var User = require("../models/User");
 
-module.exports = function(app) {
+// Login Page
+router.get("/", (req, res) => res.render("home"))
 
-    // Returns all the data of the users
-    app.get("/api/users", function(req,res) {
-        db.users.findAll({}).then(function(dbUsers) {
-            res.json(dbUsers)
+// Register Page
+router.get("/register", (req, res) => res.render('register'))
+
+// Register Handle
+router.post("/register", (req, res) => {
+    const { name, email, password, password2 } = req.body;
+    let errors = [];
+
+    // Validations
+    // Check required fields
+    if (!name || !email || !password || !password2) {
+        errors.push({ msg: "Please fill in all fields" })
+    }
+
+    // Check if password equals confirmed password
+    if (password != password2) {
+        errors.push({ msg: "Passwords do not match" })
+    }
+
+    // Check password length
+    if (password.length < 6) {
+        errors.push({ msg: "Password should be at least 6 characters" })
+    }
+
+    if (errors.length > 0) {
+        res.render("register", {
+            errors,
+            name,
+            email,
+            password,
+            password2
         })
-    })
+    } else {
+        // Validation passed
+        User.findOne({ email: email })
+            .then(user => {
+                if (user) {
+                    errors.push({ msg: "Email is already registered" })
+                    res.render('register', {
+                        errors,
+                        name,
+                        email,
+                        password,
+                        password2
+                    });
+                    // User exists
+                } else {
+                    const newUser = new User({
+                        name,
+                        email,
+                        password
+                    });
 
-    // Adds a new user to the model in mysql
-    app.post("/api/users", function(req, res) {
-        db.users.create(req.body).then(function(dbUsers) {
-            res.json(dbUsers)
-        })
-    })
-}
+                    // Hash Password    
+                    bcrypt.genSalt(10, (err, salt) =>
+                        bcrypt.hash(newUser.password, salt, (err, hash) => {
+                            if (err) throw err;
+
+                            //  Set password to hashed
+                            newUser.password = hash;
+                            //  Save user
+                            newUser.save()
+                                // If user is saved we want to redirect to login page
+                                .then(user => {
+                                    req.flash("success_msg", "You are now registered and can log in")
+                                    res.redirect("login")
+                                })
+                                .catch(err => console.log(err));
+
+                        }))
+                }
+            });
+    }
+
+})
+
+// Login Handle
+router.post('/login', (req, res, next) => {
+    passport.authenticate("local", {
+        successRedirect: '/dashboard',
+        failureRedirect: '/users/login',
+        failureFlash: true
+    })(req, res, next);
+});
+
+router.get('/logout', (req, res) => {
+    // passport middleware allows us to use the logout function
+    req.logout();
+    req.flash('success_msg', 'You are logged out');
+    res.redirect('/users/login');
+})
+
+module.exports = router;

@@ -9,7 +9,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="/" method="POST">
                         <div class="form-group">
                             <label for="user-name" class="col-form-label">Name:</label>
                             <input type="text" class="form-control" id="user-name">
@@ -17,6 +17,14 @@
                         <div class="form-group">
                             <label for="user-email" class="col-form-label">Email:</label>
                             <input class="form-control" id="user-email"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-password1" class="col-form-label">Password:</label>
+                            <input class="form-control" id="user-password1"></textarea>
+                        </div>
+                         <div class="form-group">
+                            <label for="user-password2" class="col-form-label">Password:</label>
+                            <input class="form-control" id="user-password2"></textarea>
                         </div>
 
                         <!-- TEST SPACE FOR AUTOCOMPLETE -->
@@ -50,16 +58,16 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button id = 'submitUser' type="button" class="btn btn-secondary" data-dismiss="modal">Submit</button>
+                    <button id='submitUser' type="button" class="btn btn-secondary" data-dismiss="modal">Submit</button>
                 </div>
             </div>
         </div>
     </div>
 
-{{!-- Only show when user completes form --}}
+    {{!-- Only show when user completes form --}}
     <h1>Show me Companies</h1>
-    <div id = 'companies'></div>
-{{!-- 
+    <div id='companies'></div>
+    {{!-- 
     <ul>
         {{#each companies}}
         <li>

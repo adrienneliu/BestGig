@@ -1,2 +1,0 @@
-DROP DATABASE IF EXISTS bestGigs_db;
-CREATE DATABASE bestGigs_db;

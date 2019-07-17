@@ -1,4 +1,4 @@
-// This file grabs user information to send it to the users-api-route. There it will create a new user entry
+    // This file grabs user information to send it to the users-api-route. There it will create a new user entry
 
 $(document).ready(function () {
     $(window).load(function () {
@@ -16,12 +16,16 @@ $(document).ready(function () {
         // Here we get the inputs of the companies
         var nameInput = $("#user-name").val().trim().toLowerCase();
         var emailInput = $("#user-email").val()
+        var passwordInput1 = $("user-password1").val().trim();
+        var passwordInput2  = $("user-password2").val().trim();
         var locationInput = $("#city").val().trim().toLowerCase();
 
         // Place all the userData in an object to send 
         var newUserData = {
             username: nameInput,
             email: emailInput,
+            password1: passwordInput1,
+            password2: passwordInput2,
             location: locationInput
         }
 
