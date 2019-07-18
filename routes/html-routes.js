@@ -7,7 +7,7 @@ var db = require("../models")
 module.exports = function (app) {
 
     // The root route will render the index html page (handlebars)
-    // Changed from res.render("home") to res.render("index")
+    // Changed from res.render("index") to res.render("home")
     app.get("/", function (req, res) {
         res.render("home")
     })
