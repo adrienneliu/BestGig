@@ -9,7 +9,7 @@ The purpose of BestGigs is to support hundreds of thousands of people who work i
 ## Technologies Used
 * [Visual Studio Code](https://code.visualstudio.com) - source code editor
 * [Bazaart](https://bazaart.me/) - photo editor and design app for logo.
-* [BackgroundEraser](https://www.microsoft.com/en-us/p/background-eraser/9mwqv1sjrstx) - photo editor and design app for logo.
+* [BackgroundEraser](https://www.microsoft.com/en-us/p/background-eraser/9mwqv1sjrstx) - photo background snipping tool for logo.
 * [Node](https://nodejs.org/en/) - a run-time environment that executes Javascript code outside the browser
 * [Bootstrap](https://getbootstrap.com/) - framework for creating responsive page with CSS, jQuery, and JS
 * [Tensorflow.js](https://www.tensorflow.org/js) - open source library for client side machine learning
