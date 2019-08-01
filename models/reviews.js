@@ -1,62 +1,21 @@
-module.exports = function (sequelize, DataTypes) {
-    var Reviews = sequelize.define("reviews", {
-        company_name: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [1 - 30]
-            }
-        },
+const mongoose = require("mongoose");
 
-        username: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [1 - 30]
-            }
-        },
+const CompaniesSchema = new mongoose.Schema({
+    company_name: {
+        type: String,
+        required: true
+    },
+    pay_per_hour: {
+        type: Number,
+        required: true
+    },
+    rating: {
+        type: Number,
+        required: true
+    }
 
-        pay_per_hour: {
-            type: DataTypes.FLOAT,
-            allowNull: false,
-            validate: {
-                len: [1 - 30]
-            }
-        },
+})
 
-        rating: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            validate: {
-                len: [1 - 10]
-            }
-        },
+const Companies = mongoose.model("Companies", CompaniesSchema);
 
-        location: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [1]
-            }
-        }
-    });
-
-    // Associate Reviews model with Companies
-    // Reviews.associate = function (models) {
-
-    //     // The model Reviews belongs to Companies
-    //     Reviews.belongsTo(models.companies, {
-    //         foreignKey: {
-    //             allowNull: false
-    //         }
-    //     });
-
-    //     Reviews.belongsTo(models.users, {
-    //         foreignKey: {
-    //             allowNull: false
-    //         }
-    //     })
-    // };
-    
-    return Reviews;
-}
+module.exports = Companies;

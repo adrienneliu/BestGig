@@ -53,24 +53,14 @@ app.use((req, res, next) => {
   next();
 })
 
-// Routes
-app.use("/", require('./routes/index'))
-app.use("/users", require("./routes/users"))
-
-
 // Static directory
-// app.use(express.static("public"));
+app.use(express.static("public"));
 
 // Routes
 app.use('/', require("./routes/index"));
 app.use('/users', require('./routes/users-api-routes'))
-
-// require("./routes/html-routes.js")(app);
-// require("./routes/reviews-api-routes.js")(app);
-// require("./routes/companies-api-routes.js")(app);
-// require("./routes/users-api-routes.js")(app);
-
-
+app.use("/home", require("./routes/reviews-api-routes"))
+app.use("/home", require(".//routes/companies-api-routes"))
   
 // Syncing our sequelize models and then starting our Express app
 // =============================================================

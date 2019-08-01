@@ -1,25 +1,32 @@
-<!-- Modal for User input name and location -->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="/home">Welcome {{name}}</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        </ul>
+        <a href="/users/logout" class="btn btn-outline-primary">Logout</a>
+        {{!-- <button class="btn btn-outline-success my-2 my-sm-0" type = 'submit' href = "/users/logout">Log Out</button> --}}
+        </form>
+    </div>
+</nav>
+
+<!-- Modal for User location -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
     data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Log In</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Find Companies in your Area!</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="user-name" class="col-form-label">Name:</label>
-                        <input type="text" class="form-control" id="user-name">
-                    </div>
-                    <div class="form-group">
-                        <label for="user-email" class="col-form-label">Email:</label>
-                        <input class="form-control" id="user-email"></textarea>
-                    </div>
-
+                <form action= '/api/companies' method = 'GET'>
                     <!-- TEST SPACE FOR AUTOCOMPLETE -->
                     <div class="form-location">
                         <label for="city" class="col-form-label">Your Location:</label>
@@ -46,11 +53,9 @@
                         </script>
                     </div>
                 </form>
-
-
             </div>
             <div class="modal-footer">
-                <button id='submitUser' type="button" class="btn btn-secondary" data-dismiss="modal">Submit</button>
+                <button type="submit" class="btn btn-secondary" data-dismiss="modal">Submit</button>
             </div>
         </div>
     </div>
@@ -68,17 +73,18 @@
             </div>
             <div class="modal-body">
                 <form>
-                    <div class="form-group">
+                    {{!-- <div class="form-group">
                         <label>Name</label>
                         <input class="form-control" id="name" placeholder="Name">
-                    </div>
+                    </div> --}}
                     <div class="form-group">
                         <label>Company</label>
                         <input class="form-control" id="company" placeholder="Company">
                     </div>
                     <div class="form-group">
                         <label>Rating</label>
-                            <center><input type="text" class="kv-uni-star rating-loading" value="3" data-size="lg" id="rating"></center>
+                        <center><input type="text" class="kv-uni-star rating-loading" value="3" data-size="lg"
+                                id="rating"></center>
                     </div>
                     <div class="form-group">
                         <label>Pay</label>
@@ -93,7 +99,7 @@
 
             </div>
             <div class="modal-footer">
-                <button id='submitReview' type="button" class="btn btn-secondary" data-dismiss="modal">Submit</button>
+                <button id = "submitReview" type="button" class="btn btn-secondary" data-dismiss="modal">Submit</button>
             </div>
         </div>
     </div>
@@ -176,7 +182,7 @@
 <center class="pt-1 mt-5" id="center">
     <div class="w-75 pl-3 pr-3" id='main-container'>
 
-<!-- beginning of search bar, filter, and review box -->
+        <!-- beginning of search bar, filter, and review box -->
         <div class="row">
             <div class="col-sm-9 mt-5 ml-2">
                 <div class="input-group md-form form-sm form-2 pl-5">
@@ -220,7 +226,7 @@
 
     </div>
     {{!-- Beginning of results --}}
-    <div class="container mt-3 pb-5" >
+    <div class="container mt-3 pb-5">
         <div id="results"></div>
     </div>
     {{!-- </div> --}}
@@ -231,6 +237,7 @@
 
 
 <script>
+    console.log({{email}})
     $(document).on('ready', function () {
         $('.kv-gly-star').rating({
             containerClass: 'is-star'
@@ -260,9 +267,10 @@
             emptyStar: '<span class="krajee-icon krajee-icon-star"></span>'
         });
         $('.rating,.kv-gly-star,.kv-gly-heart,.kv-uni-star,.kv-uni-rook,.kv-fa,.kv-fa-heart,.kv-svg,.kv-svg-heart').on(
-                'change', function () {
-                    console.log('Rating selected: ' + $(this).val());
-                });
+            'change', function () {
+                console.log('Rating selected: ' + $(this).val());
+            });
     });
 </script>
+
 </html>

@@ -1,16 +1,16 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
-const passport = require("passport")
+const passport = require("passport");
 
 // User Model
 var User = require("../models/User");
 
 // Login Page
-router.get("/", (req, res) => res.render("home"))
+router.get('/login', (req, res) => res.render('login', { title: 'Login' }));
 
 // Register Page
-router.get("/register", (req, res) => res.render('register'))
+router.get("/register", (req, res) => res.render('register', { title: 'Register' }));
 
 // Register Handle
 router.post("/register", (req, res) => {
@@ -20,18 +20,21 @@ router.post("/register", (req, res) => {
     // Validations
     // Check required fields
     if (!name || !email || !password || !password2) {
+        console.log("Please fill in all fields")
         errors.push({ msg: "Please fill in all fields" })
     }
 
     // Check if password equals confirmed password
     if (password != password2) {
+        console.log("Passwords do not match")
         errors.push({ msg: "Passwords do not match" })
     }
 
     // Check password length
     if (password.length < 6) {
+        console.log("Password should be at least 6 characters")
         errors.push({ msg: "Password should be at least 6 characters" })
-    }
+    }   
 
     if (errors.length > 0) {
         res.render("register", {
@@ -40,12 +43,13 @@ router.post("/register", (req, res) => {
             email,
             password,
             password2
-        })
+        });
     } else {
         // Validation passed
         User.findOne({ email: email })
             .then(user => {
                 if (user) {
+                    console.log("Email is already registered")
                     errors.push({ msg: "Email is already registered" })
                     res.render('register', {
                         errors,
@@ -88,7 +92,7 @@ router.post("/register", (req, res) => {
 // Login Handle
 router.post('/login', (req, res, next) => {
     passport.authenticate("local", {
-        successRedirect: '/dashboard',
+        successRedirect: '/home',
         failureRedirect: '/users/login',
         failureFlash: true
     })(req, res, next);
@@ -99,6 +103,6 @@ router.get('/logout', (req, res) => {
     req.logout();
     req.flash('success_msg', 'You are logged out');
     res.redirect('/users/login');
-})
+});
 
 module.exports = router;

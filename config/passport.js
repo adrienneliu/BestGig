@@ -1,10 +1,6 @@
 // Bring in local strategy
 const LocalStrategy = require("passport-local").Strategy;
 
-// bring in sequelize
-// const mongoose = require("mongoose")
-const sequelize = require("sequelize");
-
 // Need to compare encrypted password to plain text
 const bcrypt = require("bcryptjs")
 
@@ -16,6 +12,7 @@ module.exports = function (passport) {
         // Match User
         User.findOne({ email: email })
             .then(user => {
+
                 // If user does not exist
                 if (!user) {
                     return done(null, false, { message: "That email is not registered" })

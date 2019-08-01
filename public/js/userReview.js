@@ -6,18 +6,15 @@ $(document).ready(function () {
 
     $("#submitReview").on("click", function (event) {
         event.preventDefault();
-        var nameInput = $("#name").val().trim().toLowerCase();
+
         var companyInput = $("#company").val().trim().toLowerCase();
         var payInput = $("#pay").val().trim();
         var ratingInput = $("#rating").val().trim();
-        var locationInput = $("#location").val().trim().toLowerCase();
-       
-
+        var locationInput = $("#location").val().trim();
 
         // Put our info in the package newReview
         var newReview = {
             company_name: companyInput,
-            username: nameInput,
             pay_per_hour: parseFloat(payInput),
             rating: parseInt(ratingInput, 10),
             location: locationInput
